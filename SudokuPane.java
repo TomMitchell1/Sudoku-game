@@ -117,7 +117,6 @@ public class SudokuPane extends JComponent {
 		}
 	}
 
-
 	public static void printSudoku(){
 		int i=0;
 		int j=0;
@@ -174,7 +173,6 @@ public class SudokuPane extends JComponent {
 		return j-1;
 	}
 
-
 	public static void hideNumbers(){
 		int i=0;
 		int j=0;
@@ -210,6 +208,14 @@ public class SudokuPane extends JComponent {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2= (Graphics2D)g;
 		Rectangle2D.Double base;
+		Rectangle2D.Double background = new Rectangle2D.Double(0,0,800,600);
+		
+		Color brown = new Color(230, 204, 128);
+		Color green = new Color(148, 184, 77);
+		
+		g2.setColor(green);
+		g2.fill(background);
+		
 		int i=0;
 		int col=0;
 		if(!isCompleted()){
@@ -219,7 +225,7 @@ public class SudokuPane extends JComponent {
 				g2.setColor(Color.BLACK);
 				g2.draw(base);
 				base = new Rectangle2D.Double(100+40*col+1,120+i*40+1, 39, 39);
-				g2.setColor(Color.WHITE);
+				g2.setColor(brown);
 				if(started){
 					if(grid.getNumber(9*i+col).isSelected()){
 						g2.setColor(myColor);
@@ -247,7 +253,7 @@ public class SudokuPane extends JComponent {
 			g2.drawLine(100, 481, 461, 481);
 			drawNumbers(g2);
 		} else {
-			g2.setColor(Color.WHITE);
+			g2.setColor(brown);
 			base = new Rectangle2D.Double(100,120,360,360);
 			g2.fill(base);
 			g2.setColor(Color.BLACK);

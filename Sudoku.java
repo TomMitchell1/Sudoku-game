@@ -52,7 +52,7 @@ public class Sudoku {
 				
 				if(arg0.getX()>531 && arg0.getX()<731){
 					if(arg0.getY()>150 && arg0.getY()<200){
-						//System.out.println("in bounds");
+						//Then the start game button has been pressed
 						sudoku.startNewGame();
 						if(t!=null){
 							t.stop();
@@ -71,9 +71,8 @@ public class Sudoku {
 					}	
 				}
 				if(arg0.getX()>531 && arg0.getX()<731){
-					if(arg0.getY()>225 && arg0.getY()<275){
+					if(arg0.getY()>250 && arg0.getY()<300){
 						//Restart the same grid
-						//System.out.println("here");
 						sudoku.restart();
 						sudoku.repaint();
 					}

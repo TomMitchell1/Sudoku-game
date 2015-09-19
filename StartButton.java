@@ -1,9 +1,6 @@
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
-
 import javax.swing.JComponent;
 
 
@@ -16,8 +13,8 @@ public class StartButton extends JComponent {
 
 	public void draw(Graphics2D g2){
 		// Draw instructions here
-		
-		g2.setColor(Color.WHITE);
+		Color brown = new Color(230, 204, 128);
+		g2.setColor(brown);
 		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 		g2.fillRect(531, 150, 200, 50);
 		

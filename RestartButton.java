@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JComponent;
@@ -12,8 +11,8 @@ public class RestartButton extends JComponent {
 		
 	}
 	public void draw(Graphics2D g2){
-		
-		g2.setColor(Color.WHITE);
+		Color brown = new Color(230, 204, 128);
+		g2.setColor(brown);
 		g2.fillRect(531, 250, 200, 50);
 		
 		g2.setColor(Color.BLACK);

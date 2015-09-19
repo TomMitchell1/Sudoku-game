@@ -34,7 +34,8 @@ public class Time {
 		}
 	}
 	public void draw(Graphics2D g2){
-		g2.setColor(Color.WHITE); 
+		Color brown = new Color(230, 204, 128);
+		g2.setColor(brown); 
 		g2.fillRect(531, 350, 200, 100);
 		
 		g2.setColor(Color.BLACK);
