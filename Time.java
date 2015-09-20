@@ -10,29 +10,31 @@ public class Time {
 		
 		
 	}
-	
+	//Return minutes
 	public int getMinutes(){
 		return minutes;
 	}
 	
+	//Return Seconds
 	public int getSeconds() {
 		return seconds;
 	}
 	
+	//Clear timer
 	public void clearTimer(){
 		minutes=0;
 		seconds=0;
 	}
 	
-	
+	//Increases the timer when a second has been up
 	public void incrementTime(){
-		//System.out.println("incrementing time");
 		seconds++;
 		if(seconds==60){
 			minutes++;
 			seconds=0;
 		}
 	}
+	//Draws the timer box and current timer value onto the window
 	public void draw(Graphics2D g2){
 		Color brown = new Color(230, 204, 128);
 		g2.setColor(brown); 

@@ -27,6 +27,8 @@ public class SudokuPane extends JComponent {
 		t=new Time();
 	}
 	
+	// Creates a new sudoku when the player presses the new
+	// game button on the inteface.
 	public void startNewGame(){
 		started=true;
 		ArrayList<Integer> list;
@@ -57,6 +59,15 @@ public class SudokuPane extends JComponent {
 		return s;
 	}
 	
+	/*
+	 * This function generates a sudoku that the player has to solve.
+	 * The sudoku is generated using a backtracking algorithm, that
+	 * will try and place numbers till no numbers would be able to 
+	 * go in a square because that would create duplicate numbers in
+	 * a box, row or column. The algorithm then backtracks and tries 
+	 * to find a different series of numbers that would be able to
+	 * generate a correct sudoku.
+	 */
 	public static void generateSudoku(ArrayList<Integer> numberList){
 		ArrayList<Integer> list=(ArrayList<Integer>) numberList.clone();
 		int i=0;
@@ -117,6 +128,7 @@ public class SudokuPane extends JComponent {
 		}
 	}
 
+	// Prints the sudoku to stdout for debugging purposes
 	public static void printSudoku(){
 		int i=0;
 		int j=0;
@@ -172,7 +184,11 @@ public class SudokuPane extends JComponent {
 		grid.getNumber(j).modifyValue(0);
 		return j-1;
 	}
-
+	/*
+	 * Determine the numbers that are to be hidden from the user
+	 * The user has to figure out these numbers to make a solution 
+	 * to the sudoku
+	 */
 	public static void hideNumbers(){
 		int i=0;
 		int j=0;
@@ -205,6 +221,7 @@ public class SudokuPane extends JComponent {
 		}
 	}
 	
+	//Draw the sudoku on the window
 	public void paintComponent(Graphics g) {
 		Graphics2D g2= (Graphics2D)g;
 		Rectangle2D.Double base;
@@ -300,6 +317,7 @@ public class SudokuPane extends JComponent {
 		return t;
 	}
 	
+	//Draws the numbers into the boxes in the window
 	public void drawNumbers(Graphics g2){
 		int i=0;
 		int col=0;
@@ -326,6 +344,7 @@ public class SudokuPane extends JComponent {
 		
 	}
 	
+	//Restarts the current sudoku when the user presses the restart button
 	public void restart(){
 		int i=0;
 		
@@ -337,8 +356,7 @@ public class SudokuPane extends JComponent {
 		}
 	}
 	
-	
-	
+	//Determines if the sudoku has been completed by the user
 	public boolean isCompleted(){
 		boolean completed=true;
 		

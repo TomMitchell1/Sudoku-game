@@ -15,7 +15,7 @@ public class Grid {
 	public Number getNumber(int i){
 		return grid[i];
 	}
-	
+	//Does the input row already contain x
 	public boolean rowContains(int x,int row){
 		int i=0;
 		int rowConstant=9*row;
@@ -28,6 +28,7 @@ public class Grid {
 		}
 		return contains;
 	}
+	//Does the input column contain the value y
 	public boolean colContains(int y,int col){
 		int i=0;
 		int colConstant=0;
@@ -42,12 +43,15 @@ public class Grid {
 		}
 		return contains;
 	}
+	
+	//Does the box specified by the row and the column input already include x?
 	public boolean boxContains(int row,int col,int x){
 		boolean contains=false;
 		int box=0;
 		int bconst=0;
 		int i=0;
 		int j=0;
+		//Determine the box
 		if(row<3){
 			if(col<3) box=0;
 			else if(col<6) box=1;
@@ -85,6 +89,7 @@ public class Grid {
 		return contains;
 	}
 	
+	//Is the value already in the excluded list for that number?
 	public boolean exContains(int i,int a){
 		boolean contains=false;
 		int size=grid[i].getList().size();
@@ -98,7 +103,7 @@ public class Grid {
 		}
 		return contains;
 	}
-	
+	//Stop selecting a number when the user clicks on the same 
 	public void removedSelected(){
 		int i=0;
 		while(i<81){

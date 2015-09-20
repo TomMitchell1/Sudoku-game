@@ -10,9 +10,9 @@ public class StartButton extends JComponent {
 		
 	}
 	
-
+	// A function that draws the new game button onto the window
 	public void draw(Graphics2D g2){
-		// Draw instructions here
+		
 		Color brown = new Color(230, 204, 128);
 		g2.setColor(brown);
 		g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 

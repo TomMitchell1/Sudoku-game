@@ -10,6 +10,7 @@ public class RestartButton extends JComponent {
 	public RestartButton(){
 		
 	}
+	//Draw the restart button onto the window
 	public void draw(Graphics2D g2){
 		Color brown = new Color(230, 204, 128);
 		g2.setColor(brown);
