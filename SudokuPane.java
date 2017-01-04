@@ -19,7 +19,6 @@ public class SudokuPane extends JComponent {
 	private boolean started;
 	public SudokuPane(){
 		
-		
 		grid= new Grid();
 		s=new StartButton();
 		r=new RestartButton();
@@ -69,7 +68,7 @@ public class SudokuPane extends JComponent {
 	 * generate a correct sudoku.
 	 */
 	public static void generateSudoku(ArrayList<Integer> numberList){
-		ArrayList<Integer> list=(ArrayList<Integer>) numberList.clone();
+		ArrayList<Integer> list= new ArrayList<Integer>(numberList);
 		int i=0;
 		int x=0;
 		int t=0;
@@ -97,7 +96,7 @@ public class SudokuPane extends JComponent {
 				} else {
 					i=backtrack(list, i);	
 				}
-				list=(ArrayList<Integer>) numberList.clone();
+				list= new ArrayList<Integer>(numberList);
 			} else {
 				while(!isPlaced){
 					p=0;
@@ -378,7 +377,7 @@ public class SudokuPane extends JComponent {
 		int col=0;
 		int i=0;
 		//Check each row contains all numbers
-		list=(ArrayList<Integer>) originalList.clone();
+		list= new ArrayList<Integer>(originalList);
 		//System.out.println("Size of list is "+list.size());
 		while(i<81 && completed==true){
 			col=0;
@@ -393,7 +392,7 @@ public class SudokuPane extends JComponent {
 			
 			if(list.size()==0){
 				//System.out.println("Size of list is "+list.size());
-				list=(ArrayList<Integer>) originalList.clone();
+				list= new ArrayList<Integer>(originalList);
 			} else {
 				completed=false;
 			}
@@ -403,7 +402,7 @@ public class SudokuPane extends JComponent {
 		i=0;
 		
 		//Check each column contains all numbers
-		list=(ArrayList<Integer>) originalList.clone();
+		list= new ArrayList<Integer>(originalList);
 		//System.out.println("Size of list is in col "+list.size()+ " col num is "+i);
 		while(i<9 && completed==true){
 			row=0;
@@ -418,7 +417,7 @@ public class SudokuPane extends JComponent {
 			i++;
 			if(list.size()==0){
 				//System.out.println("Size of list is "+list.size());
-				list=(ArrayList<Integer>) originalList.clone();
+				list= new ArrayList<Integer>(originalList);
 			} else {
 				completed=false;
 			}
@@ -428,7 +427,7 @@ public class SudokuPane extends JComponent {
 		
 		//Box 1
 		if(completed){
-			list=(ArrayList<Integer>) originalList.clone();
+			list= new ArrayList<Integer>(originalList);
 			row=0;
 			col=0;
 		
@@ -448,7 +447,7 @@ public class SudokuPane extends JComponent {
 		}
 		//Box 2
 		if(completed){
-			list=(ArrayList<Integer>) originalList.clone();
+			list= new ArrayList<Integer>(originalList);
 			col=3;
 			row=0;
 			while(row<3){
@@ -468,7 +467,7 @@ public class SudokuPane extends JComponent {
 		
 		//Box 3
 		if(completed){
-			list=(ArrayList<Integer>) originalList.clone();
+			list= new ArrayList<Integer>(originalList);
 			col=6;
 			row=0;
 			while(row<3){
@@ -487,7 +486,7 @@ public class SudokuPane extends JComponent {
 		}
 		//Box 4
 		if(completed){
-			list=(ArrayList<Integer>) originalList.clone();
+			list= new ArrayList<Integer>(originalList);
 			col=0;
 			row=3;
 			while(row<6){
@@ -507,7 +506,7 @@ public class SudokuPane extends JComponent {
 		
 		//Box 5
 		if(completed){
-			list=(ArrayList<Integer>) originalList.clone();
+			list= new ArrayList<Integer>(originalList);
 			col=3;
 			row=3;
 			while(row<6){
@@ -527,7 +526,7 @@ public class SudokuPane extends JComponent {
 		
 		//Box 6
 		if(completed){
-			list=(ArrayList<Integer>) originalList.clone();
+			list= new ArrayList<Integer>(originalList);
 			col=6;
 			row=3;
 			while(row<6){
@@ -547,7 +546,7 @@ public class SudokuPane extends JComponent {
 		
 		//Box 7
 		if(completed){
-			list=(ArrayList<Integer>) originalList.clone();
+			list= new ArrayList<Integer>(originalList);
 			col=0;
 			row=6;
 			while(row<9){
@@ -567,7 +566,7 @@ public class SudokuPane extends JComponent {
 		
 		//Box 8
 		if(completed){
-			list=(ArrayList<Integer>) originalList.clone();
+			list= new ArrayList<Integer>(originalList);
 			col=3;
 			row=6;
 			while(row<9){
@@ -587,7 +586,7 @@ public class SudokuPane extends JComponent {
 		
 		//Box 9
 		if(completed){
-			list=(ArrayList<Integer>) originalList.clone();
+			list= new ArrayList<Integer>(originalList);
 			col=6;
 			row=6;
 			while(row<9){
