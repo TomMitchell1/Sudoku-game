@@ -15,7 +15,8 @@ public class Sudoku {
 	private static SudokuPane sudoku;
 	private static int selected;
 	private static Timer t;
-	
+	private static NumbersInBox = 9
+
 	public static void main(String[] args){
 		JFrame frame=new JFrame();
 		selected=0;
@@ -29,9 +30,9 @@ public class Sudoku {
 				int i=0;
 				if(arg0.getX()>100 && arg0.getX()<460){
 					if(arg0.getY()>120 && arg0.getY()<480){
-						col=((arg0.getX()-100)/40)%9;
-						row=((arg0.getY()-120)/40)%9;
-						i=col+9*row;
+						col=((arg0.getX()-100)/40)%NumbersInBox;
+						row=((arg0.getY()-120)/40)%NumbersInBox;
+						i=col+NumbersInBox*row;
 						if(!sudoku.getGrid().getNumber(i).isSelected()){
 							sudoku.getGrid().removedSelected();
 							

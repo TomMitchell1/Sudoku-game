@@ -3,10 +3,12 @@ import java.util.ArrayList;
 
 public class Grid {
 	private Number[] grid;
+	private static NumbersInBox = 9
+	private static NumbersInSudoku = 81
 	public Grid(){
-		grid= new Number[81];
+		grid= new Number[NumbersInSudoku];
 		int i=0;
-		while(i<81){
+		while(i<NumbersInSudoku){
 			grid[i]=new Number(0);
 			i++;
 		}
@@ -18,9 +20,9 @@ public class Grid {
 	//Does the input row already contain x
 	public boolean rowContains(int x,int row){
 		int i=0;
-		int rowConstant=9*row;
+		int rowConstant=NumbersInBox*row;
 		boolean contains=false;
-		while (i<9){
+		while (i<NumbersInBox){
 			if(grid[rowConstant+i].getNumber()==x){
 				contains=true;
 			}
@@ -33,8 +35,8 @@ public class Grid {
 		int i=0;
 		int colConstant=0;
 		boolean contains=false;
-		while(i<9){
-			colConstant=9*i;
+		while(i<NumbersInBox){
+			colConstant=NumbersInBox*i;
 			if(grid[colConstant+col].getNumber()==y){
 				contains=true;
 				
@@ -69,17 +71,17 @@ public class Grid {
 		if(box<3){
 			bconst=0;
 		} else if(box<6){
-			bconst=27;
+			bconst=3*NumbersInBox;
 			box=box-3;
 		}else {
-			bconst=54;
+			bconst=6*NumbersInBox;
 			box=box-6;
 		}	
 		
 		while(j<3){
 			i=0;
 			while(i<3){
-				if(grid[bconst+9*j+i+3*box].getNumber()==x){
+				if(grid[bconst+NumbersInBox*j+i+3*box].getNumber()==x){
 					contains=true;
 				}
 				i++;
@@ -106,7 +108,7 @@ public class Grid {
 	//Stop selecting a number when the user clicks on the same 
 	public void removedSelected(){
 		int i=0;
-		while(i<81){
+		while(i<NumbersInSudoku){
 			if(grid[i].isSelected()){
 				grid[i].modifySelected();
 			}
