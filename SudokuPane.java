@@ -17,6 +17,8 @@ public class SudokuPane extends JComponent {
 	private static RestartButton r;
 	private static Time t;
 	private boolean started;
+	private static NumbersInBox = 9
+	private static NumbersInSudoku = 81
 	public SudokuPane(){
 		
 		grid= new Grid();
@@ -80,10 +82,10 @@ public class SudokuPane extends JComponent {
 		boolean stuck=true;
 		Random randomGenerator = new Random();
 		
-		while (i<81){
+		while (i<NumbersInSudoku){
 			//System.out.print(i);
-			row=i/9;
-			col=i%9;
+			row=i/NumbersInBox;
+			col=i%NumbersInBox;
 			isPlaced=false;
 			if(col==8){
 				if(list.size()==0){
@@ -134,7 +136,7 @@ public class SudokuPane extends JComponent {
 		int c=0;
 		boolean doneRow=false;
 		boolean rowCompleted=false;
-		while(j<9){
+		while(j<NumbersInBox){
 			if((j==0|| j==3|| j==6) && (doneRow==false)){
 				while(c<12 ){
 					System.out.print("-");
@@ -148,13 +150,13 @@ public class SudokuPane extends JComponent {
 					System.out.print("|");
 				}
 				
-				if(grid.getNumber(i+9*j).getNumber()==0){
+				if(grid.getNumber(i+NumbersInBox*j).getNumber()==0){
 					System.out.print(" ");
 				} else {
-					System.out.print(grid.getNumber(i+9*j).getNumber());
+					System.out.print(grid.getNumber(i+NumbersInBox*j).getNumber());
 				}
 				i++;
-				if(i==9){
+				if(i==NumbersInBox){
 					rowCompleted=true;
 				}
 			}	
@@ -235,7 +237,7 @@ public class SudokuPane extends JComponent {
 		int i=0;
 		int col=0;
 		if(!isCompleted()){
-			while(col<9){
+			while(col<NumbersInBox){
 				base = new Rectangle2D.Double(100+40*col,120+i*40, 40, 40);
 				Color myColor = new Color(255,0,0,64);
 				g2.setColor(Color.BLACK);
@@ -243,13 +245,13 @@ public class SudokuPane extends JComponent {
 				base = new Rectangle2D.Double(100+40*col+1,120+i*40+1, 39, 39);
 				g2.setColor(brown);
 				if(started){
-					if(grid.getNumber(9*i+col).isSelected()){
+					if(grid.getNumber(NumbersInBox*i+col).isSelected()){
 						g2.setColor(myColor);
 					}
 				}	
 				g2.fill(base);
 				i++;
-				if(i==9){
+				if(i==NumbersInBox){
 					col++;
 					i=0;
 				}
@@ -324,9 +326,9 @@ public class SudokuPane extends JComponent {
 		if(started && !isCompleted()){
 			//System.out.println("redrawing numbers");
 			g2.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
-			while(i<81){
-				col=i/9;
-				row=i%9;
+			while(i<NumbersInSudoku){
+				col=i/NumbersInBox;
+				row=i%NumbersInBox;
 				if(grid.getNumber(i).isVisible()){
 					g2.setColor(Color.BLACK);
 					g2.drawString(""+grid.getNumber(i).getNumber(), 115+40*row, 148+40*col);
@@ -338,16 +340,14 @@ public class SudokuPane extends JComponent {
 				}
 				i++;
 			}
-		}
-		
-		
+		}	
 	}
 	
 	//Restarts the current sudoku when the user presses the restart button
 	public void restart(){
 		int i=0;
 		
-		while(i<81){
+		while(i<NumbersInSudoku){
 			if(!grid.getNumber(i).isVisible()){
 				grid.getNumber(i).modifyValue(0);
 			}
@@ -379,9 +379,9 @@ public class SudokuPane extends JComponent {
 		//Check each row contains all numbers
 		list= new ArrayList<Integer>(originalList);
 		//System.out.println("Size of list is "+list.size());
-		while(i<81 && completed==true){
+		while(i<NumbersInSudoku && completed==true){
 			col=0;
-			while(col<9){
+			while(col<NumbersInBox){
 				if(list.contains(grid.getNumber(i).getNumber())){
 					list.remove((Integer) grid.getNumber(i).getNumber());
 					//System.out.println("Size of list is "+ list.size()+" after removed");
@@ -404,11 +404,11 @@ public class SudokuPane extends JComponent {
 		//Check each column contains all numbers
 		list= new ArrayList<Integer>(originalList);
 		//System.out.println("Size of list is in col "+list.size()+ " col num is "+i);
-		while(i<9 && completed==true){
+		while(i<NumbersInBox && completed==true){
 			row=0;
-			while(row<9){
-				if(list.contains(grid.getNumber(9*row +i).getNumber())){
-					list.remove((Integer) grid.getNumber(9*row+i).getNumber());
+			while(row<NumbersInBox){
+				if(list.contains(grid.getNumber(NumbersInBox*row +i).getNumber())){
+					list.remove((Integer) grid.getNumber(NumbersInBox*row+i).getNumber());
 					//System.out.println("Size of list is "+ list.size()+" after removed");
 				}
 				row++;
@@ -434,8 +434,8 @@ public class SudokuPane extends JComponent {
 			while(row<3){
 				col=0;
 				while(col<3){
-					if(list.contains(grid.getNumber(9*row +col).getNumber())){
-						list.remove((Integer) grid.getNumber(9*row+col).getNumber());
+					if(list.contains(grid.getNumber(NumbersInBox*row +col).getNumber())){
+						list.remove((Integer) grid.getNumber(NumbersInBox*row+col).getNumber());
 					}
 					col++;
 				}
@@ -453,8 +453,8 @@ public class SudokuPane extends JComponent {
 			while(row<3){
 				col=3;
 				while(col<6){
-					if(list.contains(grid.getNumber(9*row +col).getNumber())){
-						list.remove((Integer) grid.getNumber(9*row+col).getNumber());
+					if(list.contains(grid.getNumber(NumbersInBox*row +col).getNumber())){
+						list.remove((Integer) grid.getNumber(NumbersInBox*row+col).getNumber());
 					}
 					col++;
 				}
@@ -472,9 +472,9 @@ public class SudokuPane extends JComponent {
 			row=0;
 			while(row<3){
 				col=6;
-				while(col<9){
-					if(list.contains(grid.getNumber(9*row +col).getNumber())){
-						list.remove((Integer) grid.getNumber(9*row+col).getNumber());
+				while(col<NumbersInBox){
+					if(list.contains(grid.getNumber(NumbersInBox*row +col).getNumber())){
+						list.remove((Integer) grid.getNumber(NumbersInBox*row+col).getNumber());
 					}
 					col++;
 				}
@@ -492,8 +492,8 @@ public class SudokuPane extends JComponent {
 			while(row<6){
 				col=0;
 				while(col<3){
-					if(list.contains(grid.getNumber(9*row +col).getNumber())){
-						list.remove((Integer) grid.getNumber(9*row+col).getNumber());
+					if(list.contains(grid.getNumber(NumbersInBox*row +col).getNumber())){
+						list.remove((Integer) grid.getNumber(NumbersInBox*row+col).getNumber());
 					}
 					col++;
 				}
@@ -512,8 +512,8 @@ public class SudokuPane extends JComponent {
 			while(row<6){
 				col=3;
 				while(col<6){
-					if(list.contains(grid.getNumber(9*row +col).getNumber())){
-						list.remove((Integer) grid.getNumber(9*row+col).getNumber());
+					if(list.contains(grid.getNumber(NumbersInBox*row +col).getNumber())){
+						list.remove((Integer) grid.getNumber(NumbersInBox*row+col).getNumber());
 					}
 					col++;
 				}
@@ -531,9 +531,9 @@ public class SudokuPane extends JComponent {
 			row=3;
 			while(row<6){
 				col=6;
-				while(col<9){
-					if(list.contains(grid.getNumber(9*row +col).getNumber())){
-						list.remove((Integer) grid.getNumber(9*row+col).getNumber());
+				while(col<NumbersInBox){
+					if(list.contains(grid.getNumber(NumbersInBox*row +col).getNumber())){
+						list.remove((Integer) grid.getNumber(NumbersInBox*row+col).getNumber());
 					}
 					col++;
 				}
@@ -549,11 +549,11 @@ public class SudokuPane extends JComponent {
 			list= new ArrayList<Integer>(originalList);
 			col=0;
 			row=6;
-			while(row<9){
+			while(row<NumbersInBox){
 				col=0;
 				while(col<3){
-					if(list.contains(grid.getNumber(9*row +col).getNumber())){
-						list.remove((Integer) grid.getNumber(9*row+col).getNumber());
+					if(list.contains(grid.getNumber(NumbersInBox*row +col).getNumber())){
+						list.remove((Integer) grid.getNumber(NumbersInBox*row+col).getNumber());
 					}
 					col++;
 				}
@@ -569,11 +569,11 @@ public class SudokuPane extends JComponent {
 			list= new ArrayList<Integer>(originalList);
 			col=3;
 			row=6;
-			while(row<9){
+			while(row<NumbersInBox){
 				col=3;
 				while(col<6){
-					if(list.contains(grid.getNumber(9*row +col).getNumber())){
-						list.remove((Integer) grid.getNumber(9*row+col).getNumber());
+					if(list.contains(grid.getNumber(NumbersInBox*row +col).getNumber())){
+						list.remove((Integer) grid.getNumber(NumbersInBox*row+col).getNumber());
 					}
 					col++;
 				}
@@ -589,11 +589,11 @@ public class SudokuPane extends JComponent {
 			list= new ArrayList<Integer>(originalList);
 			col=6;
 			row=6;
-			while(row<9){
+			while(row<NumbersInBox){
 				col=3;
-				while(col<9){
-					if(list.contains(grid.getNumber(9*row +col).getNumber())){
-						list.remove((Integer) grid.getNumber(9*row+col).getNumber());
+				while(col<NumbersInBox){
+					if(list.contains(grid.getNumber(NumbersInBox*row +col).getNumber())){
+						list.remove((Integer) grid.getNumber(NumbersInBox*row+col).getNumber());
 					}
 					col++;
 				}

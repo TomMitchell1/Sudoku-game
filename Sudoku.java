@@ -105,7 +105,7 @@ public class Sudoku {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				if(selected!=-1){
-					//System.out.println(arg0.getKeyCode());
+					//system.out.println(arg0.getKeyCode());
 					if(arg0.getKeyCode()>47 && arg0.getKeyCode()<58){
 						if(!sudoku.getGrid().getNumber(selected).isVisible()){
 							sudoku.getGrid().getNumber(selected).modifyValue(Character.getNumericValue(arg0.getKeyChar()));
