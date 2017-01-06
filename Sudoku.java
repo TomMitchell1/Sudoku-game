@@ -15,7 +15,7 @@ public class Sudoku {
 	private static SudokuPane sudoku;
 	private static int selected;
 	private static Timer t;
-	private static NumbersInBox = 9
+	private static final int NumbersInBox=9;
 
 	public static void main(String[] args){
 		JFrame frame=new JFrame();

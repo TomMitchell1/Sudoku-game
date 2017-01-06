@@ -17,10 +17,9 @@ public class SudokuPane extends JComponent {
 	private static RestartButton r;
 	private static Time t;
 	private boolean started;
-	private static NumbersInBox = 9
-	private static NumbersInSudoku = 81
+	private static final int NumbersInBox = 9;
+	private static final int NumbersInSudoku = 81;
 	public SudokuPane(){
-		
 		grid= new Grid();
 		s=new StartButton();
 		r=new RestartButton();

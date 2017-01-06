@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Grid {
 	private Number[] grid;
-	private static NumbersInBox = 9
-	private static NumbersInSudoku = 81
+	private static final int NumbersInBox=9;
+	private static final int NumbersInSudoku=81;
 	public Grid(){
 		grid= new Number[NumbersInSudoku];
 		int i=0;
